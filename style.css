@@ -94,3 +94,31 @@ button{width:78%;display:block;margin:34px auto 0;padding:13px 20px;border-radiu
   transform:none !important;
   filter:none !important;
 }
+.reveal,
+.reveal-section h1,
+.reveal-section h2,
+.reveal-section p,
+.reveal-section .place-part,
+.reveal-section .row,
+.reveal-section .palette,
+.reveal-section form,
+.reveal-section .timer{
+  opacity:0;
+  transform:translateY(24px);
+  filter:blur(6px);
+  transition:opacity 1s ease, transform 1s ease, filter 1s ease;
+}
+
+.reveal.visible,
+.reveal-section.visible h1,
+.reveal-section.visible h2,
+.reveal-section.visible p,
+.reveal-section.visible .place-part,
+.reveal-section.visible .row,
+.reveal-section.visible .palette,
+.reveal-section.visible form,
+.reveal-section.visible .timer{
+  opacity:1;
+  transform:translateY(0);
+  filter:blur(0);
+}
