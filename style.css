@@ -80,19 +80,6 @@ button{width:78%;display:block;margin:34px auto 0;padding:13px 20px;border-radiu
 }
 
 /* Сайт должен быть видимым даже если классы reveal остались в HTML */
-.reveal,
-.reveal-section,
-.reveal-section h1,
-.reveal-section h2,
-.reveal-section p,
-.reveal-section .place-part,
-.reveal-section .row,
-.reveal-section .palette,
-.reveal-section form,
-.reveal-section .timer{
-  opacity:1 !important;
-  transform:none !important;
-  filter:none !important;
 }
 .reveal,
 .reveal-section h1,
