@@ -140,4 +140,17 @@ button{
   border-color:#212842 !important;
   color:#212842 !important;
 }
+  .reveal,
+.reveal-section,
+.reveal-section h1,
+.reveal-section h2,
+.reveal-section p,
+.reveal-section .place-part,
+.reveal-section .row,
+.reveal-section .palette,
+.reveal-section form,
+.reveal-section .timer{
+  opacity:1 !important;
+  transform:none !important;
+  filter:none !important;
 }
