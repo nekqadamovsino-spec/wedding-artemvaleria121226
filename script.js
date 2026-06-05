@@ -71,3 +71,25 @@ if(form){
     form.reset();
   });
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".reveal, .reveal-section");
+
+  const show = el => el.classList.add("visible");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        show(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  items.forEach(item => observer.observe(item));
+
+  document.querySelectorAll(".hero .reveal").forEach((el, i) => {
+    setTimeout(() => show(el), 150 + i * 150);
+  });
+});
