@@ -2,10 +2,22 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxQEl7pwKnEWmLwWC_F
 
 const target = new Date("2026-12-12T15:30:00+07:00");
 
-function pad(n){ return String(n).padStart(2,"0"); }
+function pad(n){
+  return String(n).padStart(2, "0");
+}
 
 function updateCountdown(){
-  let diff = target - new Date();
+  const diff = target - new Date();
+
+  const daysEl = document.getElementById("days");
+  const hoursEl = document.getElementById("hours");
+  const minutesEl = document.getElementById("minutes");
+  const secondsEl = document.getElementById("seconds");
+
+  if(!daysEl || !hoursEl || !minutesEl || !secondsEl){
+    return;
+  }
+
   if(diff <= 0){
     const timer = document.querySelector(".timer");
     if(timer){
@@ -14,39 +26,48 @@ function updateCountdown(){
     return;
   }
 
-  days.textContent = Math.floor(diff/(1000*60*60*24));
-  hours.textContent = pad(Math.floor((diff/(1000*60*60))%24));
-  minutes.textContent = pad(Math.floor((diff/(1000*60))%60));
-  seconds.textContent = pad(Math.floor((diff/1000)%60));
+  daysEl.textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
+  hoursEl.textContent = pad(Math.floor((diff / (1000 * 60 * 60)) % 24));
+  minutesEl.textContent = pad(Math.floor((diff / (1000 * 60)) % 60));
+  secondsEl.textContent = pad(Math.floor((diff / 1000) % 60));
 }
 
 updateCountdown();
-setInterval(updateCountdown,1000);
+setInterval(updateCountdown, 1000);
 
-fetch(WEB_APP_URL, {
-  method: "POST",
-  mode: "no-cors",
-  headers: {"Content-Type": "application/json"},
-  body: JSON.stringify({ name, answer, drinks, comment })
-});
-  e.preventDefault();
+const form = document.getElementById("rsvpForm");
 
-  const name = guestName.value.trim();
-  const answer = document.querySelector('input[name="answer"]:checked')?.value || "";
-  const drinks = [...document.querySelectorAll('input[name="drink"]:checked')]
-    .map(i => i.value)
-    .join(", ");
-  const comment = document.getElementById("comment")?.value.trim() || "";
+if(form){
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
 
-  formResult.textContent = "Отправляем...";
+    const name = document.getElementById("guestName")?.value.trim() || "";
+    const answer = document.querySelector('input[name="answer"]:checked')?.value || "";
+    const drinks = [...document.querySelectorAll('input[name="drink"]:checked')]
+      .map(i => i.value)
+      .join(", ");
+    const comment = document.getElementById("comment")?.value.trim() || "";
+    const result = document.getElementById("formResult");
 
-  fetch(WEB_APP_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ name, answer, drinks, comment })
+    if(result){
+      result.textContent = "Отправляем...";
+    }
+
+    fetch(WEB_APP_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: new URLSearchParams({
+        name,
+        answer,
+        drinks,
+        comment
+      })
+    });
+
+    if(result){
+      result.textContent = name + ", спасибо! Ваш ответ отправлен.";
+    }
+
+    form.reset();
   });
-
-  formResult.textContent = name + ", спасибо! Ваш ответ отправлен.";
-  rsvpForm.reset();
-});
+}
