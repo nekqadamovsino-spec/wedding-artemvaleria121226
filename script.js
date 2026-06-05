@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyGvR7gT84fNxBltIBLjtpL9AQxfksXQ_F5mxhCrlGmXMPaudogusa2zWqPJgrYoobJNQ/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxQEl7pwKnEWmLwWC_FvjIE7w60QFalQ31OQF9kH-zo15cGAGeuari3cSMpHUQsFbl9ag/exec";
 
 const target = new Date("2026-12-12T15:30:00+07:00");
 
