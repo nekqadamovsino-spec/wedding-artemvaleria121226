@@ -23,7 +23,12 @@ function updateCountdown(){
 updateCountdown();
 setInterval(updateCountdown,1000);
 
-rsvpForm.addEventListener("submit", e => {
+fetch(WEB_APP_URL, {
+  method: "POST",
+  mode: "no-cors",
+  headers: {"Content-Type": "application/json"},
+  body: JSON.stringify({ name, answer, drinks, comment })
+});
   e.preventDefault();
 
   const name = guestName.value.trim();
