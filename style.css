@@ -1,5 +1,10 @@
 *{box-sizing:border-box}
-:root{--cream:#f2eadf;--wine:#4a0615;--ink:#111;--muted:#7b4f5a}
+:root{
+  --wine:#212842;
+  --wine-dark:#151b30;
+  --cream:#f4f0e8;
+  --soft:#8ea3c9;
+}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:'Cormorant Garamond',serif}
 .site{width:100%;max-width:430px;margin:0 auto;overflow:hidden;background:var(--cream)}
